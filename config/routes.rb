@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :users, only: [:new, :create, :destroy, :show, :update]
+  resources :users, only: [:new, :create, :destroy, :show, :update] do
+    collection do
+      get 'activate'
+    end
+  end
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do
@@ -17,7 +21,7 @@ Rails.application.routes.draw do
   resources :tracks, except: [:index] do
     resources :notes, only: [:create]
   end
-  resources :notes, except: [:index] do
-  end
+  resources :notes, except: [:index]
+
 
 end

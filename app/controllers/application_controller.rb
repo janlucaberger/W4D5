@@ -24,7 +24,20 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def authenticated?
+    if current_user
+     return true if current_user.authenticated == true
+    end
+    false
+  end
+
   def ensure_logged_in
-     redirect_to new_session_url unless logged_in?
+    debugger
+    if !authenticated?
+      flash[:errors] = ["Please check your email for auth link"]
+      redirect_to new_session_url
+    elsif !logged_in?
+      redirect_to new_session_ur
+    end
   end
 end
