@@ -2,13 +2,30 @@
 <html>
 <head>
   <title>MusicApp</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,light" rel="stylesheet">
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <%= render "layouts/navbar" %>
   <% if flash.now[:errors] %>
-    <p> <%= flash.now[:errors] %></p>
+    <div class="notification-container errors hideMe">
+
+      <% flash.now[:errors].each do |error|%>
+        <p> <%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if flash.now[:success] %>
+    <div class="notification-container success hideMe">
+      <% flash.now[:success].each do |success|%>
+        <p> <%= success %></p>
+      <% end %>
+    </div>
   <% end %>
 
 <%= yield %>

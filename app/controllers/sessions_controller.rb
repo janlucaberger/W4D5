@@ -8,17 +8,19 @@ class SessionsController < ApplicationController
       params[:user][:email],
       params[:user][:password]
     )
-
+    # debugger
     if user
       login(user)
-      redirect_to users_url
+      redirect_to bands_url
     else
-      flash.now[:errors] = "Looks like your creds dont work :("
+      flash.now[:errors] = ["Looks like your creds dont work :("]
       render :new
     end
   end
 
   def destroy
+    logout
+    redirect_to new_session_url
   end
 
 

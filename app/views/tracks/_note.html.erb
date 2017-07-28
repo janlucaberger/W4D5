@@ -1,0 +1,14 @@
+<div class="track-note-container">
+  <p><%= note.note_text %></p>
+  <h5>User: <%= note.user.email %></h5>
+
+  <% if current_user.id == note.user_id %>
+    <form class="" action="<%= note_url(note.id) %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" name="button">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+    </form>
+  <% end %>
+</div>

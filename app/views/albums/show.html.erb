@@ -1,0 +1,17 @@
+<div class="container">
+  <a href="<%= band_url(@album.band_id) %>">
+    <h4>Back to <%= @album.band.name %>
+    </a>
+    <hr>
+    <h1><%= @album.name %></h1>
+
+    <img class="album-cover" src="<%= @album.image %>">
+
+    <hr>
+    <h3>Track</h3>
+    <ul class="album-tracks-list">
+      <% @album.tracks.each do |track| %>
+      <a href="<%= track_url(track.id) %>"><li><%= track.name %></li></a>
+      <% end %>
+    </ul>
+</div>

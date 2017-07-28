@@ -1,0 +1,15 @@
+<div class="container-centered">
+  <form class="new-band-form" action="<%= bands_url %>" method="post">
+    <%= auth_token %>
+
+    <div class="form-header">
+      Create a new band
+    </div>
+    <div class="form-content">
+      <label for="bandname">Band Name</label>
+      <input id="bandname" type="text" name="band[name]" value="">
+      <br>
+
+      <input type="submit" name="" value="Add Band">
+    </div>
+  </form>

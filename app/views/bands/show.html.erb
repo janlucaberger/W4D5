@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1><%= @band.name %></h1>
+  <hr>
+  <h3>Albums</h3>
+  <% if @band.albums.empty? %>
+    <p>There aren't any albums yet!</p>
+    <a class="button" href="#">Create Album</a>
+  <% else %>
+    <ul class="band-albums-list">
+      <% @band.albums.each do |album| %>
+        <li>
+          <a href="<%= album_url(album.id) %>">
+            <div style="background-image: url(<%= album.image %>)" class="album-cover">
+              <div class="album-overlay">
+                <a href=" <%= delete_album_url(album.id) %>">
+                  <span class="delete-button white">Delete</span>
+                </a>
+                <a href="<%= album_url(album.id) %>">
+                  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <a href="<%= album_url(album.id) %>">
+              <p class="album-name"><%= album.name %></p>
+            </a>
+          </a>
+        <li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <hr>
+  <a class="button" href="<%= new_band_album_url(@band.id) %>">Create Album</a>
+
+</div>

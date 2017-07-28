@@ -1,0 +1,30 @@
+<div class="container">
+  <span>
+    <strong>Band:</strong>
+      <%= @track.band.name %>
+    <strong>Album:</strong>
+      <%= @track.album.name %>
+  </span>
+
+  <hr>
+  <h1><%= @track.name %></h1>
+  <hr>
+  <h3>Lyrics</h3>
+  <div class="">
+    <%= @track.lyrics %>
+  </div>
+
+  <hr>
+  <h3>Notes</h3>
+  <% @track.notes.each do |note| %>
+    <%# debugger %>
+    <%= render "note", note: note %>
+  <% end %>
+
+  <form class="" action="<%= track_notes_url(@track.id) %>" method="post">
+    <%= auth_token %>
+    <textarea name="note[note_text]" rows="8" cols="80"></textarea>
+    <input type="submit" name="" value="Add Note">
+  </form>
+
+</div>

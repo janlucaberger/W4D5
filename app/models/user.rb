@@ -1,9 +1,10 @@
-
 class User < ActiveRecord::Base
   validates :email, :password_digest, :session_token, presence: true
   validates :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
+
+  has_many :notes
 
   attr_reader :password
 
@@ -31,7 +32,8 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(password)
-    BCrypt::Password.new(self.session_token).is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+    # debugger
   end
 
   def password=(password)

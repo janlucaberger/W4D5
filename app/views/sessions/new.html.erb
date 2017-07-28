@@ -1,1 +1,24 @@
-<h1>Im here</h1>
+<div class="container-centered">
+
+  <form class="signup-form" action="<%= session_url %>" method="post">
+    <%= auth_token %>
+
+    <div class="form-header">
+      Sign In
+    </div>
+    <div class="form-content">
+      <label for="email">Email</label>
+      <input type="text" name="user[email]" value="">
+
+      <label for="password">Password</label>
+      <input type="password" name="user[password]" value="">
+
+      <input type="submit" name="" value="Sign In!">
+    </div>
+  </form>
+
+</div>
+
+<% if flash.now[:errors] %>
+  <p> <%= flash.now[:errors] %></p>
+<% end %>
