@@ -20,6 +20,7 @@ body {
 
 ul{
   list-style: none;
+  -webkit-padding-start: 0px;
 }
 
 a {
@@ -108,12 +109,25 @@ nav a:visited {
 
 .band-list{
   /*background: red*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
+.band-list a {
+  margin: 10px;
+}
+
 .band-list li {
-  width: 100%;
+  margin: 10px 0px;
   text-align: center;
   padding: 20px;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
   box-shadow: 1px 1px 11px 0px rgba(0, 0, 0, 0.28);
+  background-color: #009688;
 }
 
 .album-cover{

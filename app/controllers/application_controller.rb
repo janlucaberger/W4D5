@@ -32,12 +32,12 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_logged_in
-    debugger
+    # debugger
     if !authenticated?
       flash[:errors] = ["Please check your email for auth link"]
       redirect_to new_session_url
     elsif !logged_in?
-      redirect_to new_session_ur
+      redirect_to new_session_url
     end
   end
 end

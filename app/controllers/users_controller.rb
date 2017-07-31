@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @user = User.find_by(activation_token: params[:activation_token])
     if @user
       @user.toggle(:authenticated)
+      @user.save!
       debugger
       redirect_to bands_url
     else
